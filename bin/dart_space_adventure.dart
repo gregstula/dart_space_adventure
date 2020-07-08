@@ -14,14 +14,18 @@ void main(List<String> arguments) {
 
   print('Shall I randomly choose a planet for you to visit? (Y or N)');
 
-  var answer = stdin.readLineSync();
-
-  if (answer == 'Y') {
-    print('Ok, traveling to Mercury!\n'
-        'Arrived at Mercury. A very hot planet, closest to the sun.');
-  } else {
-    print('Name the planet you would like to visit.');
-    final planetName = stdin.readLineSync();
-    print('Traveling to $planetName');
+  var answer = '';
+  while (answer != 'Y' && answer != 'N') {
+    answer = stdin.readLineSync();
+    if (answer == 'Y') {
+      print('Ok, traveling to Mercury!\n'
+          'Arrived at Mercury. A very hot planet, closest to the sun.');
+    } else if (answer == 'N') {
+      print('Name the planet you would like to visit.');
+      final planetName = stdin.readLineSync();
+      print('Traveling to $planetName');
+    } else {
+      print('Sorry, I didn\'t get that.');
+    }
   }
 }
