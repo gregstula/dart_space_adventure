@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'package:dart_space_adventure/dart_space_adventure.dart';
+import 'planetary_system.dart';
 
 class SpaceAdventure {
+  PlanetarySystem planetarySystem;
+  SpaceAdventure({this.planetarySystem});
+
   void printGreeting() {
-    final system = PlanetarySystem.withName('Solar System');
-    print('Welcome to the ${system.name}');
+    print('Welcome to the ${planetarySystem.name}');
     print('There are 8 planets to explore');
   }
 
