@@ -10,9 +10,10 @@ class PlanetarySystem {
   PlanetarySystem({this.name = 'Unamed System', this.planets = const []});
 
   PlanetarySystem.fromJson(String json) {
-    name = jsonDecode(json)['name'];
+    var decodedJson = jsonDecode(json);
+    name = decodedJson['name'];
 
-    List<dynamic> jsonPlanets = jsonDecode(json)['planets'];
+    List<dynamic> jsonPlanets = decodedJson['planets'];
 
     planets = jsonPlanets
         .map((item) =>
