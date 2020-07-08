@@ -26,17 +26,22 @@ class SpaceAdventure {
         'Arrived at Mercury. A very hot planet, closest to the sun.');
   }
 
-  void travelToPlanetName() {
-    final planetName =
-        responseToPrompt('Name the planet you would like to visit.');
-    print('Traveling to $planetName');
+  void travelTo(String destination) {
+    print('Traveling to $destination...');
+    planetarySystem.planets.forEach((planet) {
+      if (planet.name == destination) {
+        print('Arrived at $destination!\n ${planet.description}');
+      }
+    });
   }
 
   void travel(bool randomDestination) {
     if (randomDestination) {
       travelToRandomPlanet();
     } else {
-      travelToPlanetName();
+      final planetName =
+          responseToPrompt('Name the planet you would like to visit.');
+      travelTo(planetName);
     }
   }
 
