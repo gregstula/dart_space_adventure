@@ -28,24 +28,33 @@ void travelToPlanetName() {
   print('Traveling to $planetName');
 }
 
-void travel() {
+void travel(bool randomDestination) {
+  if (randomDestination) {
+    travelToRandomPlanet();
+  } else {
+    travelToPlanetName();
+  }
+}
+
+bool promptForRandomOrSpecificDestination(String prompt) {
 // prompt user
   var answer = '';
   while (answer != 'Y' && answer != 'N') {
-    answer = responseToPrompt(
-        'Shall I randomly choose a planet for you to visit? (Y or N)');
+    answer = responseToPrompt(prompt);
     if (answer == 'Y') {
-      travelToRandomPlanet();
+      return true;
     } else if (answer == 'N') {
-      travelToPlanetName();
+      return false;
     } else {
       print('Sorry, I didn\'t get that.');
     }
   }
+  return false;
 }
 
 void main(List<String> arguments) {
   printGreeting();
   printIntroduction(responseToPrompt('What is your name?'));
-  travel();
+  travel(promptForRandomOrSpecificDestination(
+      'Shall I randomly choose a planet for you to visit? (Y or N)'));
 }
