@@ -12,12 +12,15 @@ String getName() {
   return stdin.readLineSync();
 }
 
+void printIntroduction(String name) {
+  print('Nice to meet you, $name!\n'
+      'Let\'s go on an adventure.');
+}
+
 void main(List<String> arguments) {
   printGreeting();
   var name = getName();
-  print('Nice to meet you, $name!\n'
-      'Let\'s go on an adventure.');
-
+  printIntroduction(name);
   print('Shall I randomly choose a planet for you to visit? (Y or N)');
 
 // prompt user
