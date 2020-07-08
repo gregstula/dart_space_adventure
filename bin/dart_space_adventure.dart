@@ -3,8 +3,28 @@ import 'package:test/test.dart';
 
 void main(List<String> arguments) {
   SpaceAdventure(
-      planetarySystem: PlanetarySystem(name: 'Solar System', planets: [
+          planetarySystem:
+              PlanetarySystem(name: 'Solar System', planets: mockPlanets()))
+      .start();
+}
+
+List<Planet> mockPlanets() {
+  return [
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
+    Planet(
+        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
     Planet(
         name: 'Mercury', description: 'A very hot planet, closest to the sun.')
-  ])).start();
+  ];
 }
