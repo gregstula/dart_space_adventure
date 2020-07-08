@@ -1,30 +1,10 @@
+import 'dart:io';
+import 'dart:convert';
 import 'package:dart_space_adventure/dart_space_adventure.dart';
-import 'package:test/test.dart';
 
 void main(List<String> arguments) {
-  SpaceAdventure(
-          planetarySystem:
-              PlanetarySystem(name: 'Solar System', planets: mockPlanets()))
-      .start();
-}
-
-List<Planet> mockPlanets() {
-  return [
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.'),
-    Planet(
-        name: 'Mercury', description: 'A very hot planet, closest to the sun.')
-  ];
+  if (arguments.isNotEmpty) {
+    var json = File(arguments[0]).readAsStringSync();
+    SpaceAdventure(planetarySystem: PlanetarySystem.fromJson(json)).start();
+  }
 }

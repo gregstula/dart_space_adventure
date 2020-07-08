@@ -1,12 +1,24 @@
-import 'planet.dart';
+import 'dart:convert';
 import 'dart:math';
+import 'planet.dart';
 
 class PlanetarySystem {
-  final String name;
-  final List<Planet> planets;
+  String name;
+  List<Planet> planets;
   final Random _random = Random();
 
   PlanetarySystem({this.name = 'Unamed System', this.planets = const []});
+
+  PlanetarySystem.fromJson(String json) {
+    name = jsonDecode(json)['name'];
+
+    List<dynamic> jsonPlanets = jsonDecode(json)['planets'];
+
+    planets = jsonPlanets
+        .map((item) =>
+            Planet(name: item['name'], description: item['description']))
+        .toList();
+  }
 
   int get numberOfPlanets => planets.length;
   bool get hasPlanets => planets.isNotEmpty;
